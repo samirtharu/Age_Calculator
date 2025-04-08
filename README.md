@@ -1,6 +1,6 @@
 # Age Calculator
 
-A beautiful, modern, and responsive web application that calculates your exact age down to the second based on your date of birth, supporting both Bikram Sambat (BS/Nepali) and Anno Domini (AD/Gregorian) date formats.
+A beautiful, modern, and responsive web application that calculates your exact age down to the second based on your date of birth, supporting both Bikram Sambat (BS/Nepali) and Anno Domini (AD/Gregorian) date format.
 
 <div align="center">
   <img src="./Preview/calPrev.png" alt="Age Calculator Preview" width="800"/>
