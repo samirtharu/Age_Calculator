@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="bulb bulb-1"></div>
+        <div class="bulb bulb-2"></div>
+        <div class="bulb bulb-3"></div>
+        <div class="bulb bulb-4"></div>
+    </div>
+    
+    <div class="container">
+        <div class="card">
+            <h1>Age Calculator</h1>
+            <p class="subtitle">Find out your exact age down to the second</p>
+            
+            <!-- Toggle Switch for BS/AD -->
+            <div class="toggle-container">
+                <span class="toggle-label">BS</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="date-format-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="toggle-label">AD</span>
+            </div>
+            
+            <div class="input-container">
+                <label id="date-input-label" for="dob">Select your date of birth (Nepali Date)</label>
+                
+                <!-- Nepali date input: Year, Month, Day dropdowns -->
+                <div class="nepali-date-input" id="nepali-date-section">
+                    <select id="year" class="nepali-select">
+                        <option value="">Year</option>
+                        <!-- Years will be populated by JavaScript -->
+                    </select>
+                    
+                    <select id="month" class="nepali-select">
+                        <option value="">Month</option>
+                        <option value="1">Baisakh</option>
+                        <option value="2">Jestha</option>
+                        <option value="3">Ashadh</option>
+                        <option value="4">Shrawan</option>
+                        <option value="5">Bhadra</option>
+                        <option value="6">Ashwin</option>
+                        <option value="7">Kartik</option>
+                        <option value="8">Mangsir</option>
+                        <option value="9">Poush</option>
+                        <option value="10">Magh</option>
+                        <option value="11">Falgun</option>
+                        <option value="12">Chaitra</option>
+                    </select>
+                    
+                    <select id="day" class="nepali-select">
+                        <option value="">Day</option>
+                        <!-- Days will be populated by JavaScript -->
+                    </select>
+                </div>
+                
+                <!-- AD date input (initially hidden) -->
+                <div class="ad-date-input" id="ad-date-section" style="display: none;">
+                    <select id="ad-year" class="ad-select">
+                        <option value="">Year</option>
+                        <!-- Years will be populated by JavaScript -->
+                    </select>
+                    
+                    <select id="ad-month" class="ad-select">
+                        <option value="">Month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    
+                    <select id="ad-day" class="ad-select">
+                        <option value="">Day</option>
+                        <!-- Days will be populated by JavaScript -->
+                    </select>
+                </div>
+                
+                <!-- Hidden input for AD date (used by the age calculation) -->
+                <input type="date" id="dob" name="dob" style="display: none;">
+                
+                <button id="calculate">Calculate Age</button>
+            </div>
+            
+            <div class="result" id="result">
+                <div class="result-header">Your age is</div>
+                <div class="age-container">
+                    <div class="age-box">
+                        <span id="years">-</span>
+                        <span class="age-label">Years</span>
+                    </div>
+                    <div class="age-box">
+                        <span id="months">-</span>
+                        <span class="age-label">Months</span>
+                    </div>
+                    <div class="age-box">
+                        <span id="days">-</span>
+                        <span class="age-label">Days</span>
+                    </div>
+                </div>
+                <div class="time-container">
+                    <div class="time-box">
+                        <span id="hours">-</span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">-</span>
+                        <span class="time-label">Minutes</span>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">-</span>
+                        <span class="time-label">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Axios for API calls -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

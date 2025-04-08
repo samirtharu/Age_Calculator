@@ -1,0 +1,8 @@
+# Ignore img directory
+img/
+
+# Other common files to ignore
+.DS_Store
+node_modules/
+*.log
+.env 

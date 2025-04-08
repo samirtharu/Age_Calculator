@@ -1,0 +1,600 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #6e8efb 0%, #a777e3 50%, #8fd3f4 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+    animation: gradientShift 15s ease infinite;
+    background-size: 300% 300%;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Background Blurry Bulbs */
+.background-effects {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bulb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.6;
+    animation: float 12s infinite ease-in-out;
+}
+
+.bulb-1 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at 30% 40%, #ff6b95, #ffaa5e);
+    top: -100px;
+    right: -50px;
+    animation-delay: 0s;
+    animation: float 12s infinite ease-in-out, pulse 8s infinite alternate;
+}
+
+.bulb-2 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle at 70% 60%, #4facfe, #00f2fe);
+    bottom: -150px;
+    left: -100px;
+    animation-delay: -3s;
+    animation: float 12s infinite ease-in-out, pulse 10s infinite alternate-reverse;
+}
+
+.bulb-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle at 40% 50%, #a18cd1, #fbc2eb);
+    top: 30%;
+    right: 10%;
+    animation-delay: -6s;
+    animation: float 12s infinite ease-in-out, pulse 9s infinite alternate;
+}
+
+.bulb-4 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at 50% 50%, #84fab0, #8fd3f4);
+    top: 70%;
+    left: 15%;
+    animation-delay: -9s;
+    animation: float 12s infinite ease-in-out, pulse 7s infinite alternate-reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.05);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.4;
+        filter: blur(60px);
+    }
+    100% {
+        opacity: 0.7;
+        filter: blur(70px);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.6), 
+                inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 25%, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.1) 50%, transparent 50%, transparent 75%, rgba(255, 255, 255, 0.1) 75%);
+    background-size: 20px 20px;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2),
+                inset 0 1px 1px rgba(255, 255, 255, 0.7), 
+                inset 0 -1px 1px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #4a6fa1;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.subtitle {
+    text-align: center;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+
+/* Toggle Switch */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    margin: 0 12px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e0e0e0;
+    transition: 0.4s;
+    border-radius: 34px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .toggle-slider {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(30px);
+}
+
+.toggle-label {
+    color: #4a6fa1;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+/* AD Date Inputs */
+.ad-date-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.ad-select {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #dde1e7;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230984e3%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+    background-size: 12px auto;
+    padding-right: 30px;
+}
+
+.ad-select:focus {
+    border-color: #a1c4fd;
+}
+
+.input-container {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #4a6fa1;
+    font-weight: 500;
+}
+
+/* Nepali Date Input Styles */
+.nepali-date-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.nepali-select {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #dde1e7;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%230984e3%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+    background-size: 12px auto;
+    padding-right: 30px;
+}
+
+.nepali-select:focus {
+    border-color: #a1c4fd;
+}
+
+.nepali-select option {
+    background-color: #2b3a55;
+    color: white;
+    padding: 8px;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #dde1e7;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+input[type="date"]:focus {
+    border-color: #a1c4fd;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.result {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.result-header {
+    text-align: center;
+    font-weight: 500;
+    color: #4a6fa1;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.age-container, .time-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.age-box, .time-box {
+    flex: 1;
+    background-color: #f5f7fa;
+    border-radius: 10px;
+    padding: 15px 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.age-box:hover, .time-box:hover {
+    transform: translateY(-3px);
+}
+
+.age-box span, .time-box span {
+    display: block;
+}
+
+#years, #months, #days, #hours, #minutes, #seconds {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #2575fc;
+    margin-bottom: 5px;
+}
+
+.age-label, .time-label {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+/* Dropdown styling for both Nepali and AD selects */
+.nepali-select option, .ad-select option {
+    background-color: #2b3a55;
+    color: white;
+    padding: 8px;
+}
+
+/* Limit height of select dropdowns to prevent overflow */
+select {
+    -webkit-appearance: menulist;
+    appearance: menulist;
+    height: auto;
+}
+
+/* Remove problematic size styles */
+select[size] {
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
+}
+
+/* Remove webkit scrollbar customization that may be causing issues */
+select::-webkit-scrollbar {
+    width: auto;
+}
+
+select::-webkit-scrollbar-track {
+    background: initial;
+    border-radius: initial;
+}
+
+select::-webkit-scrollbar-thumb {
+    background: initial;
+    border-radius: initial;
+}
+
+/* Fix for mobile display */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+        align-items: flex-start;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    
+    .container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .card {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+    }
+    
+    .subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+    }
+    
+    .nepali-date-input, .ad-date-input {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .nepali-select, .ad-select {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .nepali-select option {
+        padding: 8px;
+    }
+    
+    .age-container, .time-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .age-box, .time-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    
+    .age-box span, .time-box span {
+        display: inline;
+    }
+    
+    #years, #months, #days, #hours, #minutes, #seconds {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+    }
+    
+    .bulb {
+        filter: blur(40px);
+        opacity: 0.4;
+    }
+    
+    button {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Fix option styling */
+select optgroup, select option {
+    font-family: 'Poppins', sans-serif;
+    padding: 8px;
+    font-size: 0.95rem;
+}
+
+/* Option styling for dropdown */
+select.nepali-select option, select.ad-select option {
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    background-color: white;
+    color: #333;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+/* First option in dropdown */
+select.nepali-select option:first-child, select.ad-select option:first-child {
+    font-weight: 500;
+    color: #666;
+    border-bottom: 1px solid #eeeeee;
+}
+
+/* Dropdown styles for hover and focus */
+select.nepali-select option:hover, 
+select.ad-select option:hover,
+select.nepali-select option:focus, 
+select.ad-select option:focus,
+select.nepali-select option:checked,
+select.ad-select option:checked {
+    background-color: #f2f6ff;
+    color: #0984e3;
+}
+
+/* Add default scrollbar for dropdowns */
+.nepali-select:focus,
+.ad-select:focus {
+    height: auto;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Style for dropdown options */
+.nepali-select option,
+.ad-select option {
+    padding: 8px 15px;
+    background-color: #fff;
+    color: #333;
+    font-size: 1rem;
+}
+
+/* Hover effect for options */
+.nepali-select option:hover,
+.ad-select option:hover {
+    background-color: #f0f7ff;
+}
+
+/* Active/Selected option */
+.nepali-select option:checked,
+.ad-select option:checked {
+    background-color: #e3f2fd;
+    color: #0984e3;
+}
+
+/* Remove custom scrollbar styles and use default */
+.nepali-select,
+.ad-select {
+    scrollbar-width: auto;
+    scrollbar-color: #0984e3 #f0f0f0;
+}
+
+/* For Webkit browsers like Chrome/Safari */
+.nepali-select::-webkit-scrollbar,
+.ad-select::-webkit-scrollbar {
+    width: auto;
+}
+
+.nepali-select::-webkit-scrollbar-track,
+.ad-select::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.nepali-select::-webkit-scrollbar-thumb,
+.ad-select::-webkit-scrollbar-thumb {
+    background-color: #0984e3;
+    border-radius: 4px;
+    border: 2px solid #f0f0f0;
+} 
