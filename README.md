@@ -6,6 +6,8 @@ A beautiful, modern, and responsive web application that calculates your exact a
   <img src="./Preview/calPrev.png" alt="Age Calculator Preview" width="800"/>
 </div>
 
+**[➡️ Check out the live demo](https://samirtharu.github.io/Age_Calculator/)**
+
 ## ✨ Features
 
 - **Dual Date Format Support**: 
